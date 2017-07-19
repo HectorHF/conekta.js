@@ -1,4 +1,4 @@
-![alt tag](https://raw.github.com/conekta/conekta.js/master/readme_files/cover.png)
+![README Cover Image](readme_cover.png)
 
 Conekta.JS 0.5.0
 ===
@@ -116,7 +116,7 @@ Conekta.Token.create($('#card-form'), successHandler, errorHandler);
 
 ## Documentation
 
-Please see https://www.conekta.io/docs/api for up-to-date documentation.
+Please see [developers.conekta.com/api](https://developers.conekta.com/api) for up-to-date documentation.
 
 ## Library Development and Testing
 
@@ -139,8 +139,10 @@ docker run -ti conekta/conekta.js /bin/bash --login
 ```
 ## License
 
-Developed by [Conekta](https://www.conekta.io). Available with [MIT License](LICENSE).
+Developed in Mexico by [Conekta](https://www.conekta.com) in. Available with [MIT License](LICENSE).
 
-## We are hiring
+***
 
-If you are a comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills. Send your CV, github to quieroser@conekta.io
+## We are always hiring!
+
+If you are a comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills. Send us your CV and GitHub to quieroser@conekta.com
