@@ -3,7 +3,7 @@
 Conekta.JS 1.0.1
 ===
 
-Conekta.js allow you create token with card details on your web apps, by preventing sensitive card data from hitting your server(More information, read PCI compliance).
+Conekta.js allows you to create a token with credit/debit card details in your web apps, by preventing sensitive card data from crossing your server (More information, read PCI compliance).
 
 ## Install
 
@@ -15,7 +15,7 @@ $ bower install conekta.js --save
 
 ### Basic initialization
 
-On your html, before body tag close, include jquery and conekta
+In your HTML, before the body tag closes, include jQuery and Conekta
 
 ```html
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -139,10 +139,10 @@ docker run -ti conekta/conekta.js /bin/bash --login
 ```
 ## License
 
-Developed in Mexico by [Conekta](https://www.conekta.com) in. Available with [MIT License](LICENSE).
+Developed in México by [Conekta](https://www.conekta.com). Available with [MIT License](LICENSE).
 
 ***
 
 ## We are always hiring!
 
-If you are a comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills. Send us your CV and GitHub to quieroser@conekta.com
+If you are comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills, send us your CV and GitHub to quieroser@conekta.com
