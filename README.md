@@ -1,6 +1,6 @@
 ![README Cover Image](readme_cover.png)
 
-Conekta.JS 0.5.0
+Conekta.JS 1.0.1
 ===
 
 Conekta.js allow you create token with card details on your web apps, by preventing sensitive card data from hitting your server(More information, read PCI compliance).
@@ -20,7 +20,7 @@ On your html, before body tag close, include jquery and conekta
 ```html
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
+<script type="text/javascript" src="https://cdn.conekta.io/js/v1.0.1/conekta.js"></script>
 ```
 
 Set your public key
@@ -34,7 +34,7 @@ Conekta.setPublicKey('key_KJysdbf6PotS2ut2');
 ```html
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script type="text/javascript" data-conekta-public-key="key_KJysdbf6PotS2ut2" src="https://conektaapi.s3.amazonaws.com/v0.5.0/js/conekta.js"></script>
+<script type="text/javascript" data-conekta-public-key="key_KJysdbf6PotS2ut2" src="https://cdn.conekta.io/js/v1.0.1/conekta.js"></script>
 ```
 
 ### Tokenize Card
