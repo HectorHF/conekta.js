@@ -3369,11 +3369,11 @@ global.easyXDM = easyXDM;
         iframe.setAttribute("scrolling", "no");
         iframe.setAttribute("frameborder", "0");
         iframe.setAttribute("width", "1");
-        iframe.setAttribute("src", base_url + "fraud_providers/kount/logo.htm?m=" + kount_merchant_id + "&s=" + session_id);
+        iframe.setAttribute("src", "https://ssl.kaptcha.com/logo.htm?m=" + kount_merchant_id + "&s=" + session_id);
         image = document.createElement('img');
         image.setAttribute("height", "1");
         image.setAttribute("width", "1");
-        image.setAttribute("src", base_url + "fraud_providers/kount/logo.gif?m=" + kount_merchant_id + "&s=" + session_id);
+        image.setAttribute("src", "https://ssl.kaptcha.com/logo.gif?m=" + kount_merchant_id + "&s=" + session_id);
         Conekta.Fingerprint(function(params) {
           var img;
           img = document.createElement('img');
