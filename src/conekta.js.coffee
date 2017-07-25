@@ -38,11 +38,8 @@ public_key = localstorageGet('_conekta_publishable_key')
 fingerprint = ->
   if typeof document != 'undefined' and typeof document.body != 'undefined' and document.body and (document.readyState == 'interactive' or document.readyState == 'complete') and 'undefined' != typeof Conekta
     if Conekta._helpers.finger_printed() != '1'
-      #kount
       body = document.getElementsByTagName('body')[0]
 
-      #if ! (location.protocol == 'https:' and (navigator.userAgent.match(/MSIE/) or navigator.userAgent.match(/Trident\/7\./)))
-      #fingerprinting png
       iframe = document.createElement('iframe')
       iframe.setAttribute("height", "1")
       iframe.setAttribute("scrolling", "no")
@@ -55,7 +52,6 @@ fingerprint = ->
       image.setAttribute("width", "1")
       image.setAttribute("src", "https://ssl.kaptcha.com/logo.gif?m=#{kount_merchant_id}&s=#{session_id}")
 
-      # shield
       Conekta.Fingerprint((params) ->
         img = document.createElement('img')
         img.setAttribute("width", "1")
@@ -364,15 +360,15 @@ if !window.Conekta
         Conekta._helpers.log('Unusable public key: ' + key)
       return
 
-    # TODO: Deprecate on version 2.0.0
     setPublishableKey: (key) ->
+      console.warn('setPublishableKey is going to be deprecated on version 2.0.0')
       return setPublicKey(key)
 
     getPublicKey: (key) ->
       public_key
 
-    # TODO: Deprecate on version 2.0.0
     getPublishableKey: () ->
+      console.warn('setPublishableKey is going to be deprecated on version 2.0.0')
       return getPublicKey()
 
     _helpers:

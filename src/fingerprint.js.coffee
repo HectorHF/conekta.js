@@ -38,7 +38,7 @@ Conekta.Fingerprint = (done) ->
     results = [];
     # Not using strict equality so that this acts as a
     # shortcut to checking for `null` and `undefined`.
-    if (obj == null) 
+    if (obj == null)
       return results
     if (this.nativeMap && obj.map == this.nativeMap)
       return obj.map(iterator, context)
@@ -75,11 +75,11 @@ Conekta.Fingerprint = (done) ->
       resolution = [screen.height, screen.width] if (screen.height > screen.width)
     else
       resolution = [screen.width, screen.height]
-    
+
     if (typeof resolution != "undefined")
       keys.push({key: "sw", value: resolution[0]})
       keys.push({key: "sh", value: resolution[1]})
-    
+
     return keys
 
   getCharacterSet = () ->
@@ -112,7 +112,7 @@ Conekta.Fingerprint = (done) ->
   addBehaviorKey = () ->
     if(document.body && document.body.addBehavior)
       keys.push({key: "add_behavior", value: 1})
-    
+
     return keys
 
   openDatabaseKey = () ->
@@ -435,7 +435,7 @@ Conekta.Fingerprint = (done) ->
       keys.push({key: "nf", value: available.length});
 
       done(keys);
-    
+
     return setTimeout(callback, 1)
 
   fontsKey = (keys, done) ->
@@ -452,7 +452,7 @@ Conekta.Fingerprint = (done) ->
 
     if window.location.hostname != ""
       hostname = window.location.hostname
-    
+
     keys.push({key: "h", value: hostname})
     return keys
 
@@ -500,7 +500,7 @@ Conekta.Fingerprint = (done) ->
     each(newKeys, (pair) ->
       values.push(pair.key + '=' + pair.value);
     );
-    
+
     return done(values);
   );
 
