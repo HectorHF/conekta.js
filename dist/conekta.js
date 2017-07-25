@@ -404,12 +404,14 @@
         }
       },
       setPublishableKey: function(key) {
+        console.warn('setPublishableKey is going to be deprecated on version 2.0.0');
         return setPublicKey(key);
       },
       getPublicKey: function(key) {
         return public_key;
       },
       getPublishableKey: function() {
+        console.warn('setPublishableKey is going to be deprecated on version 2.0.0');
         return getPublicKey();
       },
       _helpers: {
