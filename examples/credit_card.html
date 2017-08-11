@@ -8,14 +8,13 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
   <!-- Incluir Conekta.js -->
-  <script 
-    type="text/javascript"
-    data-conekta-public-key="key_KJysdbf6PotS2ut2"
-    src="../dist/conekta.js"></script>
+  <script type="text/javascript" src="../dist/conekta.js"></script>
  
   <script type="text/javascript">
 
     jQuery(function($) {
+      Conekta.setPublicKey('key_KJysdbf6PotS2ut2')
+
       var conektaSuccessResponseHandler = function(token) {
         
         var $form = $('#payment-form');
