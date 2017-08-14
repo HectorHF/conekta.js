@@ -1,5 +1,5 @@
 /* 
- * conekta.js v1.0.0
- * Conekta 2013
+ * conekta.js v1.0.1
+ * Conekta 2017
  * https://github.com/conekta/conekta.js/blob/master/LICENSE.txt
  */
