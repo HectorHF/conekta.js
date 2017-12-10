@@ -46,7 +46,7 @@ card_types = [
   }
   {
     name: 'discover'
-    pattern: /^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)/
+    pattern: discoverRegex()
     valid_length: [ 16 ]
   }
 ]
@@ -66,10 +66,12 @@ is_valid_luhn = (number) ->
 is_valid_length = (number, card_type) ->
   number.length in card_type.valid_length
 
-accepted_cards = ['visa', 'mastercard', 'maestro', 'visa_electron', 'amex', 'laser', 'diners_club_carte_blanche', 'diners_club_international', 'discover', 'jcb']
+valid_cards = ['visa', 'mastercard', 'maestro', 'visa_electron', 'amex', 
+               'laser', 'diners_club_carte_blanche', 
+               'diners_club_international', 'discover', 'jcb']
 
 get_card_type = (number) ->
-  for card_type in (card for card in card_types when card.name in accepted_cards)
+  for card_type in (card for card in card_types when card.name in valid_cards)
     if number.match card_type.pattern
       return card_type
 
@@ -92,6 +94,22 @@ parseYear = (year)->
   else
     year
 
+cardsRegex = ()->
+  regex_string = "visa|master\\s*card|amex|american\\s*express|banorte|" +
+                 "banamex|bancomer|hsbc|scotiabank|jcb|diners\\s*club|discover"
+  new RegExp( regex_string , "i" )
+
+discoverRegex = ()->
+  regex_string = "^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]" +
+                 "|92[0-5]|64[4-9])|65)"
+  new RegExp( regex_string )
+
+minMonth = ()->
+  ( new Date() ).getFullYear() - 1
+
+maxMonth = ()->
+  ( new Date() ).getFullYear() + 22
+
 Conekta.card = {}
 
 Conekta.card.getBrand = (number)->
@@ -108,7 +126,8 @@ Conekta.card.getBrand = (number)->
   null
 
 Conekta.card.validateCVC = (cvc)->
-  (typeof cvc == 'number' and cvc >=0 and cvc < 10000) or (typeof cvc == 'string' and cvc.match(/^[\d]{3,4}$/) != null)
+  (typeof cvc == 'number' and cvc >=0 and cvc < 10000) or 
+  (typeof cvc == 'string' and cvc.match(/^[\d]{3,4}$/) != null)
 
 Conekta.card.validateExpMonth = (exp_month)->
   month = parseMonth(exp_month)
@@ -116,14 +135,15 @@ Conekta.card.validateExpMonth = (exp_month)->
 
 Conekta.card.validateExpYear = (exp_year)->
   year = parseYear(exp_year)
-  (typeof year == 'number' and year > 2013 and year < 2035)
+  (typeof year == 'number' and year > minMonth() and year < maxMonth() )
 
 Conekta.card.validateExpirationDate = (exp_month, exp_year)->
   month = parseMonth(exp_month)
   year = parseYear(exp_year)
 
-  if (typeof month == 'number' and month > 0 and month < 13) and (typeof year == 'number' and year > 2013 and year < 2035)
-    ((new Date(year, month, new Date(year, month,0).getDate())) > (new Date()))
+  if (typeof month == 'number' and month > 0 and month < 13) and 
+     (typeof year == 'number' and year > minMonth() and year < maxMonth() )
+    new Date(year, month, 0) > new Date()
   else
     false
 
@@ -132,7 +152,9 @@ Conekta.card.validateExpiry = (exp_month, exp_year)->
   Conekta.card.validateExpirationDate(exp_month, exp_year)
 
 Conekta.card.validateName = (name) ->
-  (typeof name == 'string' and name.match(/^\s*[A-z]+\s+[A-z]+[\sA-z]*$/) != null and name.match(/visa|master\s*card|amex|american\s*express|banorte|banamex|bancomer|hsbc|scotiabank|jcb|diners\s*club|discover/i) == null)
+  (typeof name == 'string' and 
+    name.match( /^\s*[A-z]+\s+[A-z]+[\sA-z]*$/ ) != null and 
+    name.match( cardsRegex() ) == null)
 
 Conekta.card.validateNumber = (number) ->
   if typeof number == 'string'

@@ -29,5 +29,37 @@ describe("Conekta js", function() {
     expect(Conekta._helpers.xDomainPost).toHaveBeenCalled();
   });
 
+  it("should validate a card expiration date", function () {
+    today = new Date()
+    year = today.getFullYear()
+    month = today.getMonth() + 1 // .getMonth() returns months 0 to 11
+
+    expect(window.Conekta).toExist();
+    expect(window.Conekta.card).toExist();
+
+    validation_result = window.Conekta.card.validateExpirationDate(month, year)
+    expect(validation_result)
+
+    month = today.getMonth() + 1
+
+    if(month > 12){
+      month = 1
+      year = today.getFullYear() + 1
+    }
+
+    validation_result = window.Conekta.card.validateExpirationDate(month, year)
+    expect(validation_result)
+
+    month = today.getMonth() - 1
+
+    if(month < 1){
+      month = 12
+      year = today.getFullYear() - 1
+    }
+    
+    validation_result = window.Conekta.card.validateExpirationDate(month, year)
+    expect( ! validation_result)
+  })
+
 
 });
